@@ -20,18 +20,6 @@ public final class RailroadsReaderProcessor {
         // No OP
     }
 
-    private static String getErrorForLine(int lineNumber, RailroadsApplicationException exception) {
-        return "Error at line " + lineNumber + ": " + exception.getMessageWithCause();
-    }
-
-    private static Stack<Integer> parseTrainStringToIntegerStack(String trainString) throws TrainCoachesIncorrectFormatException {
-        try {
-            return Arrays.stream(trainString.split(TrainCoachesDelimiter)).map(Integer::parseUnsignedInt).collect(Collectors.toCollection(Stack::new));
-        } catch (NumberFormatException e) {
-            throw new TrainCoachesIncorrectFormatException(e);
-        }
-    }
-
     public static String processTrainBlocks(BufferedReader trainsBlocksReader) throws IOException {
         StringBuilder result = new StringBuilder();
         String line = trainsBlocksReader.readLine();
@@ -86,5 +74,17 @@ public final class RailroadsReaderProcessor {
         }
 
         return result.toString();
+    }
+
+    private static String getErrorForLine(int lineNumber, RailroadsApplicationException exception) {
+        return "Error at line " + lineNumber + ": " + exception.getMessageWithCause();
+    }
+
+    private static Stack<Integer> parseTrainStringToIntegerStack(String trainString) throws TrainCoachesIncorrectFormatException {
+        try {
+            return Arrays.stream(trainString.split(TrainCoachesDelimiter)).map(Integer::parseUnsignedInt).collect(Collectors.toCollection(Stack::new));
+        } catch (NumberFormatException e) {
+            throw new TrainCoachesIncorrectFormatException(e);
+        }
     }
 }

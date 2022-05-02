@@ -28,18 +28,6 @@ public final class RailroadsFileManager {
         createOutputFileIfNotExists();
     }
 
-    private void createOutputFileIfNotExists() throws OutputFileNotCreatedException {
-        try {
-            if (!OutputFile.exists()) {
-                if (!OutputFile.createNewFile()) {
-                    throw new OutputFileNotCreatedException(OutputFile.toPath());
-                }
-            }
-        } catch (IOException e) {
-            throw new OutputFileNotCreatedException(OutputFile.toPath(), e);
-        }
-    }
-
     public BufferedReader getInputFileReader() throws InputFileReadException {
         try {
             return new BufferedReader(new FileReader(InputFile));
@@ -53,6 +41,18 @@ public final class RailroadsFileManager {
             writer.write(value);
         } catch (IOException e) {
             throw new OutputFileWriteException(InputFile.toPath(), e);
+        }
+    }
+
+    private void createOutputFileIfNotExists() throws OutputFileNotCreatedException {
+        try {
+            if (!OutputFile.exists()) {
+                if (!OutputFile.createNewFile()) {
+                    throw new OutputFileNotCreatedException(OutputFile.toPath());
+                }
+            }
+        } catch (IOException e) {
+            throw new OutputFileNotCreatedException(OutputFile.toPath(), e);
         }
     }
 }
