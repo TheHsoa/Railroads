@@ -1,3 +1,5 @@
+#!/bin/bash
+
 TEST_CLASS_PATH="out/test"
 SRC_CLASS_PATH="out/src"
 JUNIT_CONSOLE_PATH="$TEST_CLASS_PATH/junit-platform-console-standalone.jar"

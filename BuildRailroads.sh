@@ -1,3 +1,5 @@
+#!/bin/bash
+
 CLASS_PATH="out/src"
 SOURCES=$(find -path "./src/*" -name "*.java")
 
