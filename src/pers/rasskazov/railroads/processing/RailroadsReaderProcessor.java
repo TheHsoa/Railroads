@@ -1,4 +1,4 @@
-package pers.rasskazov.railroads;
+package pers.rasskazov.railroads.processing;
 
 import pers.rasskazov.railroads.checkers.TrainCoachesReorganizationChecker;
 import pers.rasskazov.railroads.exceptions.IncorrectNumberOfTrainCoachesException;

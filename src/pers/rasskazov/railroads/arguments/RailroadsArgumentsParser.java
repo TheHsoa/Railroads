@@ -1,14 +1,14 @@
-package pers.rasskazov.railroads;
+package pers.rasskazov.railroads.arguments;
 
 import pers.rasskazov.railroads.exceptions.DirectoryNotSetException;
 import pers.rasskazov.railroads.exceptions.EmptyArgumentsException;
 
-final class RailroadsArgumentsParser {
+public final class RailroadsArgumentsParser {
     private RailroadsArgumentsParser() {
         // No OP
     }
 
-    static String parse(String[] arguments) throws EmptyArgumentsException, DirectoryNotSetException {
+    public static String parse(String[] arguments) throws EmptyArgumentsException, DirectoryNotSetException {
         if (arguments == null || arguments.length == 0) {
             throw new EmptyArgumentsException();
         }
