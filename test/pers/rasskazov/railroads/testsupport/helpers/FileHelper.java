@@ -21,7 +21,7 @@ public final class FileHelper {
 
     public static Path generateInputFileWithOneBlockForTest(int numberOfTrainCoaches) throws IOException {
 
-        Path inputFileDirectoryPath = Paths.get("/tests/generated")
+        Path inputFileDirectoryPath = Paths.get("./tests/generated")
                 .resolve(StringGenerator.generateRandomLatinAlphaNumericString(30));
         File inputFileDirectory = inputFileDirectoryPath.toFile();
 
