@@ -34,6 +34,7 @@ public final class RailroadsReaderProcessor {
                     throw new NumberOfTrainCoachesIncorrectFormatException();
                 }
 
+                // process train block
                 String blockLine = trainsBlocksReader.readLine();
                 lineNumber++;
                 while (blockLine != null && !BlockLastLine.equals(blockLine)) {
@@ -60,6 +61,7 @@ public final class RailroadsReaderProcessor {
                     blockLine = trainsBlocksReader.readLine();
                     lineNumber++;
                 }
+
                 if (blockLine == null) {
                     break;
                 }
