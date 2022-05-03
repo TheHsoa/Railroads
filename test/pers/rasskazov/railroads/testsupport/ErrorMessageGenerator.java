@@ -13,10 +13,6 @@ public final class ErrorMessageGenerator {
         return "Error: " + exception.getMessageWithCause();
     }
 
-    public static String generateFileNotFoundCauseExceptionMessage(Path filePath) {
-        return filePath.toString() + " (The system cannot find the file specified)";
-    }
-
     public static String generateForInputStringExceptionMessage(String inputStringValue) {
         return "For input string: \"" + inputStringValue + "\"";
     }
