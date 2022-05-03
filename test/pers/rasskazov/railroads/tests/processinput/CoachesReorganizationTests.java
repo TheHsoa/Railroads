@@ -20,8 +20,8 @@ final class CoachesReorganizationTests extends BaseProcessInputTests {
     }
 
     @Test
-    void coachBlockedInStation_no() {
-        Path directoryPath = getClassResourcePath(getClass(), "coachBlockedInStation");
+    void coachBlockedAtStation_no() {
+        Path directoryPath = getClassResourcePath(getClass(), "coachBlockedAtStation");
 
         List<String> expectedOutputFileContent = Collections.singletonList(RailroadsConstants.ItImpossibleToMarshalTheCoaches);
 

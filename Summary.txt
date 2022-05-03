@@ -1,0 +1,106 @@
+Solution included:
+* console-application Railroads
+* set of tests
+* shell scripts for build application, tests and run it
+
+Language: Java (openjdk version "1.8.0_312")
+OS: Ubuntu 22.04
+
+Solution on github: https://github.com/TheHsoa/Railroads.git
+
+Console-application Railroads
+	* Arguments: path to directory with input.txt file
+	* Output: output.txt file saved to arguments path directory
+	* Errors:
+		input file data processing errors
+			logged to input.txt file
+			format: "Error at line {line number}: {error message}"
+		other errors like incorrect arguments, read input file etc
+			logget to console
+			format: Error: {error message}
+
+	* Algorithm:
+		Algorithm for calculation the possibility of reorganization train coaches implemented in TrainCoachesReorganizationChecker#checkCanTrainReorganized(package pers.rasskazov.railroads.checkers)
+		In general algorithm trying to reorganize coaches in initial state - from B to A.
+		If next coach for A direction is blocked in train station - it's impossible reorganize coaches in specified order.
+		Sequentially starting from the last to first coach we trying to move them to direction A:
+			* checking is coach at the station
+				* if yes
+					* check top coach at station is the desired one
+						* if yes - remove it from station
+						* if no - algorthm ends - it's impossible reorganize trains
+				* if no
+					* move coaches from B to station, until find desired one
+					* desired coach only remove from B
+		If one of the coaches is missing (there is a coach with number greater than N or duplicated coaches) result will be "No".
+
+Tests
+	Tests use JUnit 5.
+	In tests calls Railroads.main method without starting application.
+	Almost all process input.txt file tests use pre created test data.
+	Test set:
+	* Command line error tests:
+		* Directory path errors:
+			* Empty string in argument - not allowed
+			* Invalid path in argument - not allowed
+			* Not existent directory - not allowed
+			* Path to file in argument - not allowed
+		* Input file errors:
+			* Input file not exists in directory - not allowed
+		* Arguments parsing:
+			* Null in arguments - not allowed
+			* Zero length arguments - not allowed
+			* Not initialized array in arguments - not allowed
+	* Process input.txt file
+		* Block
+			* Empty block - empty result
+			* Several valid blocks with reorganizations
+			* Several valid blocks one without reorganizations - empty result for block without reorganizations
+			* Several reorganizations in one block
+			* Last block without 0
+			* Several blocks, not last and not first block with error - processed to error
+			* Several reorganizations in one block, not last and not first with error_processedToError
+		* Coaches reorganization:
+			* Reversed order - yes
+			* Coach blocked in station - no
+		* Input file tests
+			* Empty input file - empty result
+			* Only zero in file - empty result
+			* Not formatted content in file - error on line
+			* File ends without zero - allowed
+		* Number of coaches:
+			* Negative number of coaches - error on line
+			* Float number of coaches - error on line
+			* Number of coaches equals 1000 - allowed
+			* Number of coaches equals 1001 - error on line
+		* Block lines
+			* Number of coaches in line not equals number of coaches in block - error on line
+			* Not formatted string in block line - error on line
+			* Not first coach in incorrect format - error on line
+			* Float coach number - error on line
+			* Zero coach number - no
+			* Several coaches with same number - no
+			* Coach with number greater than number of coaches in block - no
+
+Shell scripts:
+* BuildRailroads.sh
+	build Railroads application to ./out/src
+	runs without input arguments
+* BuildRailroadsTests.sh
+	build Railroads application tests to ./out/test
+	could run only after build application(BuildRailroads.sh)
+	downloads required package for tests junit-platform-console-standalone-1.8.2.jar
+	runs without input arguments
+* RunRailroadsTests.sh
+	run application JUnit tests from ./out/test
+	could run only after build application(BuildRailroads.sh) and tests(BuildRailroadsTests.sh)
+	runs without input arguments
+* RunRailroads.sh
+	run Railroads command-line application from ./out/src
+	could run only after build application(BuildRailroads.sh)
+	in arguments need pass the path to directory with input file
+		to solution added example directory with input.txt file
+		example: ./RunRailroads.sh ./example
+* BuildAllAndRunTests.sh
+	sequentially build application, build tests and run tests
+	example: ./BuildAllAndRunTests.sh

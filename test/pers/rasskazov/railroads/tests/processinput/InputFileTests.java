@@ -22,7 +22,7 @@ final class InputFileTests extends BaseProcessInputTests {
     }
 
     @Test
-    void only0InFile_EmptyResult() {
+    void only0InFile_emptyResult() {
         Path directoryPath = getClassResourcePath(getClass(), "only0InFile");
 
         processInputTest(directoryPath, new LinkedList<>());

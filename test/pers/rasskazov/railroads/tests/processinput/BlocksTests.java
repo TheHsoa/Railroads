@@ -17,15 +17,15 @@ import static pers.rasskazov.railroads.testsupport.helpers.ResourcesHelper.getCl
 
 final class BlocksTests extends BaseProcessInputTests {
     @Test
-    void noTrainsInBlock_emptyResult() {
-        Path directoryPath = getClassResourcePath(getClass(), "noTrainsInBlock");
+    void noReorganizationsInBlock_emptyResult() {
+        Path directoryPath = getClassResourcePath(getClass(), "noReorganizationsInBlock");
 
         processInputTest(directoryPath, new LinkedList<>());
     }
 
     @Test
-    void severalValidBlocksWithTrains() {
-        Path directoryPath = getClassResourcePath(getClass(), "severalValidBlocksWithTrains");
+    void severalValidBlocksWithReorganizations() {
+        Path directoryPath = getClassResourcePath(getClass(), "severalValidBlocksWithReorganizations");
 
         List<String> expectedOutputFileContent = Arrays.asList(RailroadsConstants.ItPossibleToMarshalTheCoaches,
                 StringConstants.EmptyString,
@@ -35,8 +35,8 @@ final class BlocksTests extends BaseProcessInputTests {
     }
 
     @Test
-    void severalValidBlocksOneWithoutTrains_emptyResultForBlockWithoutTrains() {
-        Path directoryPath = getClassResourcePath(getClass(), "severalValidBlocksOneWithoutTrains");
+    void severalValidBlocksOneWithoutReorganizations_emptyResultForBlockWithoutReorganizations() {
+        Path directoryPath = getClassResourcePath(getClass(), "severalValidBlocksOneWithoutReorganizations");
 
         List<String> expectedOutputFileContent = Arrays.asList(RailroadsConstants.ItPossibleToMarshalTheCoaches,
                 StringConstants.EmptyString,
@@ -47,8 +47,8 @@ final class BlocksTests extends BaseProcessInputTests {
     }
 
     @Test
-    void severalTrainsInOneBlock() {
-        Path directoryPath = getClassResourcePath(getClass(), "severalTrainsInOneBlock");
+    void severalReorganizationsInOneBlock() {
+        Path directoryPath = getClassResourcePath(getClass(), "severalReorganizationsInOneBlock");
 
         List<String> expectedOutputFileContent = Arrays.asList(RailroadsConstants.ItPossibleToMarshalTheCoaches,
                 RailroadsConstants.ItPossibleToMarshalTheCoaches);
@@ -80,8 +80,8 @@ final class BlocksTests extends BaseProcessInputTests {
     }
 
     @Test
-    void severalTrainsInOneBlock_inNotLastAndNotFirstError_processedToError() {
-        Path directoryPath = getClassResourcePath(getClass(), "severalTrainsInOneBlock_inNotLastAndNotFirstError");
+    void severalReorganizationsInOneBlock_inNotLastAndNotFirstError_processedToError() {
+        Path directoryPath = getClassResourcePath(getClass(), "severalReorganizationsInOneBlock_inNotLastAndNotFirstError");
 
         int errorLineNumber = 3;
         String exceptionOnString = "s";
