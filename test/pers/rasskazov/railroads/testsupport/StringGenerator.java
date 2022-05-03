@@ -4,7 +4,7 @@ import java.security.SecureRandom;
 import java.util.Random;
 
 public final class StringGenerator {
-    private static final String IncorrectPathSymbols = "/<>:]\\|?*";
+    private static final String IncorrectPathSymbols = Character.toString ((char) 0);;
     private static final String UpperLatinLetters = "ABCDEFGHIKLMNOPQRSTVXYZ";
     private static final String LowerLatinLetters = "abcdefghiklmnopqrstvxyz";
     private static final String LatinLetters = UpperLatinLetters + LowerLatinLetters;
@@ -32,9 +32,6 @@ public final class StringGenerator {
 
     public static String generateRandomString(int length, String symbols) {
         if (length < 1) {
-            throw new IllegalArgumentException();
-        }
-        if (symbols.length() < 2) {
             throw new IllegalArgumentException();
         }
 
