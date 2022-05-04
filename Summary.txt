@@ -23,16 +23,19 @@ Console-application Railroads
 		Algorithm for calculation the possibility of reorganization train coaches implemented in TrainCoachesReorganizationChecker#checkCanTrainReorganized(package pers.rasskazov.railroads.checkers)
 		In general algorithm trying to reorganize coaches in initial state - from B to A.
 		If next coach for A direction is blocked in train station - it's impossible reorganize coaches in specified order.
-		Sequentially starting from the last to first coach we trying to move them to direction A:
+		If one of the coaches is missing (there is a coach with number greater than N or duplicated coaches) result will be "No".
+
+		* Sequentially starting from the last to first coach number we trying to move them to direction A:
+			if all coaches moved to A - it's possible reorganize train
 			* checking is coach at the station
 				* if yes
 					* check top coach at station is the desired one
-						* if yes - remove it from station
-						* if no - algorthm ends - it's impossible reorganize trains
+						* if yes - remove it from station(=moved to A)
+						* if no - algorthm ends - it's impossible reorganize train
 				* if no
 					* move coaches from B to station, until find desired one
-					* desired coach only remove from B
-		If one of the coaches is missing (there is a coach with number greater than N or duplicated coaches) result will be "No".
+						*if found: desired coach only remove from B(=moved to A)
+						* if not found - algorthm ends - it's impossible reorganize train
 
 Tests
 	Tests use JUnit 5.
