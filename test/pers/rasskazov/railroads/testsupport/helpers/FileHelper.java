@@ -1,6 +1,6 @@
 package pers.rasskazov.railroads.testsupport.helpers;
 
-import pers.rasskazov.railroads.constants.RailroadsConstants;
+import pers.rasskazov.railroads.testsupport.StringConstants;
 import pers.rasskazov.railroads.testsupport.StringGenerator;
 
 import java.io.BufferedWriter;
@@ -27,7 +27,7 @@ public final class FileHelper {
 
         assertTrue(inputFileDirectory.mkdirs(), "Directory already exists or not created: " + inputFileDirectoryPath);
 
-        Path inputFilePath = inputFileDirectoryPath.resolve(RailroadsConstants.InputFileName);
+        Path inputFilePath = inputFileDirectoryPath.resolve(StringConstants.InputFileName);
         Files.createFile(inputFilePath);
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -37,13 +37,13 @@ public final class FileHelper {
 
         IntStream.range(1, 1001).forEach(x -> {
             stringBuilder.append(x);
-            stringBuilder.append(RailroadsConstants.TrainCoachesDelimiter);
+            stringBuilder.append(StringConstants.TrainCoachesDelimiter);
         });
         stringBuilder.append(System.lineSeparator());
 
-        stringBuilder.append(RailroadsConstants.BlockLastLine);
+        stringBuilder.append(StringConstants.BlockLastLine);
         stringBuilder.append(System.lineSeparator());
-        stringBuilder.append(RailroadsConstants.BlockLastLine);
+        stringBuilder.append(StringConstants.BlockLastLine);
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(inputFilePath.toFile()))) {
             writer.write(stringBuilder.toString());

@@ -1,9 +1,7 @@
 package pers.rasskazov.railroads.tests.processinput;
 
 import org.junit.jupiter.api.Test;
-import pers.rasskazov.railroads.constants.RailroadsConstants;
-import pers.rasskazov.railroads.constants.StringConstants;
-import pers.rasskazov.railroads.exceptions.TrainCoachesIncorrectFormatException;
+import pers.rasskazov.railroads.testsupport.StringConstants;
 
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -11,8 +9,8 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import static pers.rasskazov.railroads.testsupport.ErrorMessageGenerator.generateForInputStringExceptionMessage;
-import static pers.rasskazov.railroads.testsupport.ErrorMessageGenerator.generateOutputFileErrorMessage;
+import static pers.rasskazov.railroads.testsupport.RailroadsErrorMessages.generateForInputStringExceptionMessage;
+import static pers.rasskazov.railroads.testsupport.RailroadsErrorMessages.generateOutputFileErrorMessage;
 import static pers.rasskazov.railroads.testsupport.helpers.ResourcesHelper.getClassResourcePath;
 
 final class BlocksTests extends BaseProcessInputTests {
@@ -27,9 +25,9 @@ final class BlocksTests extends BaseProcessInputTests {
     void severalValidBlocksWithReorganizations() {
         Path directoryPath = getClassResourcePath(getClass(), "severalValidBlocksWithReorganizations");
 
-        List<String> expectedOutputFileContent = Arrays.asList(RailroadsConstants.ItPossibleToMarshalTheCoaches,
+        List<String> expectedOutputFileContent = Arrays.asList(StringConstants.ItPossibleToMarshalTheCoaches,
                 StringConstants.EmptyString,
-                RailroadsConstants.ItPossibleToMarshalTheCoaches);
+                StringConstants.ItPossibleToMarshalTheCoaches);
 
         processInputTest(directoryPath, expectedOutputFileContent);
     }
@@ -38,10 +36,10 @@ final class BlocksTests extends BaseProcessInputTests {
     void severalValidBlocksOneWithoutReorganizations_emptyResultForBlockWithoutReorganizations() {
         Path directoryPath = getClassResourcePath(getClass(), "severalValidBlocksOneWithoutReorganizations");
 
-        List<String> expectedOutputFileContent = Arrays.asList(RailroadsConstants.ItPossibleToMarshalTheCoaches,
+        List<String> expectedOutputFileContent = Arrays.asList(StringConstants.ItPossibleToMarshalTheCoaches,
                 StringConstants.EmptyString,
                 StringConstants.EmptyString,
-                RailroadsConstants.ItPossibleToMarshalTheCoaches);
+                StringConstants.ItPossibleToMarshalTheCoaches);
 
         processInputTest(directoryPath, expectedOutputFileContent);
     }
@@ -50,8 +48,7 @@ final class BlocksTests extends BaseProcessInputTests {
     void severalReorganizationsInOneBlock() {
         Path directoryPath = getClassResourcePath(getClass(), "severalReorganizationsInOneBlock");
 
-        List<String> expectedOutputFileContent = Arrays.asList(RailroadsConstants.ItPossibleToMarshalTheCoaches,
-                RailroadsConstants.ItPossibleToMarshalTheCoaches);
+        List<String> expectedOutputFileContent = Arrays.asList(StringConstants.ItPossibleToMarshalTheCoaches, StringConstants.ItPossibleToMarshalTheCoaches);
 
         processInputTest(directoryPath, expectedOutputFileContent);
     }
@@ -60,8 +57,7 @@ final class BlocksTests extends BaseProcessInputTests {
     void lastBlockWithout0_allowed() {
         Path directoryPath = getClassResourcePath(getClass(), "lastBlockWithout0");
 
-        List<String> expectedOutputFileContent = Collections.singletonList(
-                RailroadsConstants.ItPossibleToMarshalTheCoaches);
+        List<String> expectedOutputFileContent = Collections.singletonList(StringConstants.ItPossibleToMarshalTheCoaches);
 
         processInputTest(directoryPath, expectedOutputFileContent);
     }
@@ -72,9 +68,8 @@ final class BlocksTests extends BaseProcessInputTests {
 
         int errorLineNumber = 5;
         String exceptionOnString = "s";
-        String errorMessage = generateOutputFileErrorMessage(errorLineNumber,
-                new TrainCoachesIncorrectFormatException(new Exception(generateForInputStringExceptionMessage(exceptionOnString))));
-        List<String> expectedOutputFileContent = Arrays.asList(RailroadsConstants.ItPossibleToMarshalTheCoaches, StringConstants.EmptyString, errorMessage);
+        String errorMessage = generateOutputFileErrorMessage(errorLineNumber, generateForInputStringExceptionMessage(exceptionOnString));
+        List<String> expectedOutputFileContent = Arrays.asList(StringConstants.ItPossibleToMarshalTheCoaches, StringConstants.EmptyString, errorMessage);
 
         processInputTest(directoryPath, expectedOutputFileContent);
     }
@@ -85,12 +80,8 @@ final class BlocksTests extends BaseProcessInputTests {
 
         int errorLineNumber = 3;
         String exceptionOnString = "s";
-        String errorMessage = generateOutputFileErrorMessage(errorLineNumber,
-                new TrainCoachesIncorrectFormatException(new Exception(
-                        generateForInputStringExceptionMessage(
-                                exceptionOnString))));
-        List<String> expectedOutputFileContent = Arrays.asList(RailroadsConstants.ItPossibleToMarshalTheCoaches,
-                errorMessage);
+        String errorMessage = generateOutputFileErrorMessage(errorLineNumber, generateForInputStringExceptionMessage(exceptionOnString));
+        List<String> expectedOutputFileContent = Arrays.asList(StringConstants.ItPossibleToMarshalTheCoaches, errorMessage);
 
         processInputTest(directoryPath, expectedOutputFileContent);
     }

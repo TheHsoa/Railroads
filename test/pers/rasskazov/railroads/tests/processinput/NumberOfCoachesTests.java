@@ -1,15 +1,15 @@
 package pers.rasskazov.railroads.tests.processinput;
 
 import org.junit.jupiter.api.Test;
-import pers.rasskazov.railroads.constants.RailroadsConstants;
-import pers.rasskazov.railroads.exceptions.NumberOfTrainCoachesIncorrectFormatException;
+import pers.rasskazov.railroads.testsupport.RailroadsErrorMessages;
+import pers.rasskazov.railroads.testsupport.StringConstants;
 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Collections;
 import java.util.List;
 
-import static pers.rasskazov.railroads.testsupport.ErrorMessageGenerator.generateOutputFileErrorMessage;
+import static pers.rasskazov.railroads.testsupport.RailroadsErrorMessages.generateOutputFileErrorMessage;
 import static pers.rasskazov.railroads.testsupport.helpers.FileHelper.generateInputFileWithOneBlockForTest;
 import static pers.rasskazov.railroads.testsupport.helpers.ResourcesHelper.getClassResourcePath;
 
@@ -19,7 +19,7 @@ final class NumberOfCoachesTests extends BaseProcessInputTests {
         Path directoryPath = getClassResourcePath(getClass(), "negativeNumberOfCoaches");
 
         int errorLineNumber = 1;
-        String errorMessage = generateOutputFileErrorMessage(errorLineNumber, new NumberOfTrainCoachesIncorrectFormatException());
+        String errorMessage = generateOutputFileErrorMessage(errorLineNumber, RailroadsErrorMessages.NumberOfTrainCoachesIncorrectFormatMessage);
         List<String> expectedOutputFileContent = Collections.singletonList(errorMessage);
 
         processInputTest(directoryPath, expectedOutputFileContent);
@@ -30,7 +30,7 @@ final class NumberOfCoachesTests extends BaseProcessInputTests {
         Path directoryPath = getClassResourcePath(getClass(), "floatNumberOfCoaches");
 
         int errorLineNumber = 1;
-        String errorMessage = generateOutputFileErrorMessage(errorLineNumber, new NumberOfTrainCoachesIncorrectFormatException());
+        String errorMessage = generateOutputFileErrorMessage(errorLineNumber, RailroadsErrorMessages.generateForInputStringExceptionMessage("5.5"));
         List<String> expectedOutputFileContent = Collections.singletonList(errorMessage);
 
         processInputTest(directoryPath, expectedOutputFileContent);
@@ -41,7 +41,7 @@ final class NumberOfCoachesTests extends BaseProcessInputTests {
         int numberOfCoaches = 1000;
         Path inputFilePath = generateInputFileWithOneBlockForTest(numberOfCoaches);
 
-        List<String> expectedOutputFileContent = Collections.singletonList(RailroadsConstants.ItPossibleToMarshalTheCoaches);
+        List<String> expectedOutputFileContent = Collections.singletonList(StringConstants.ItPossibleToMarshalTheCoaches);
 
         processInputTest(inputFilePath, expectedOutputFileContent);
     }
@@ -52,7 +52,7 @@ final class NumberOfCoachesTests extends BaseProcessInputTests {
         Path inputFilePath = generateInputFileWithOneBlockForTest(numberOfCoaches);
 
         int errorLineNumber = 1;
-        String errorMessage = generateOutputFileErrorMessage(errorLineNumber, new NumberOfTrainCoachesIncorrectFormatException());
+        String errorMessage = generateOutputFileErrorMessage(errorLineNumber, RailroadsErrorMessages.NumberOfTrainCoachesIncorrectFormatMessage);
         List<String> expectedOutputFileContent = Collections.singletonList(errorMessage);
 
         processInputTest(inputFilePath, expectedOutputFileContent);

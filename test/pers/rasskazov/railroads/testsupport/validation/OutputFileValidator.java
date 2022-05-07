@@ -1,11 +1,12 @@
 package pers.rasskazov.railroads.testsupport.validation;
 
+import pers.rasskazov.railroads.testsupport.StringConstants;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static pers.rasskazov.railroads.constants.RailroadsConstants.OutputFileName;
 
 public final class OutputFileValidator {
     private OutputFileValidator() {
@@ -13,7 +14,7 @@ public final class OutputFileValidator {
     }
 
     public static void validateOutputFile(Path folderPath, List<String> expectedOutputFileContents) {
-        Path outputFilePath = folderPath.resolve(OutputFileName);
+        Path outputFilePath = folderPath.resolve(StringConstants.OutputFileName);
 
         assertTrue(outputFilePath.toFile().exists(), "Output file: " + outputFilePath + " not exists.");
 

@@ -4,7 +4,8 @@ import java.security.SecureRandom;
 import java.util.Random;
 
 public final class StringGenerator {
-    private static final String IncorrectPathSymbols = Character.toString ((char) 0);;
+    private static final String IncorrectPathSymbols = Character.toString((char) 0);
+    ;
     private static final String UpperLatinLetters = "ABCDEFGHIKLMNOPQRSTVXYZ";
     private static final String LowerLatinLetters = "abcdefghiklmnopqrstvxyz";
     private static final String LatinLetters = UpperLatinLetters + LowerLatinLetters;

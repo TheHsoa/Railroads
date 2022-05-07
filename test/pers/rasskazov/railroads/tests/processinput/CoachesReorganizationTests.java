@@ -1,7 +1,7 @@
 package pers.rasskazov.railroads.tests.processinput;
 
 import org.junit.jupiter.api.Test;
-import pers.rasskazov.railroads.constants.RailroadsConstants;
+import pers.rasskazov.railroads.testsupport.StringConstants;
 
 import java.nio.file.Path;
 import java.util.Collections;
@@ -14,7 +14,7 @@ final class CoachesReorganizationTests extends BaseProcessInputTests {
     void reverseOrder_yes() {
         Path directoryPath = getClassResourcePath(getClass(), "reverseOrder");
 
-        List<String> expectedOutputFileContent = Collections.singletonList(RailroadsConstants.ItPossibleToMarshalTheCoaches);
+        List<String> expectedOutputFileContent = Collections.singletonList(StringConstants.ItPossibleToMarshalTheCoaches);
 
         processInputTest(directoryPath, expectedOutputFileContent);
     }
@@ -23,7 +23,7 @@ final class CoachesReorganizationTests extends BaseProcessInputTests {
     void coachBlockedAtStation_no() {
         Path directoryPath = getClassResourcePath(getClass(), "coachBlockedAtStation");
 
-        List<String> expectedOutputFileContent = Collections.singletonList(RailroadsConstants.ItImpossibleToMarshalTheCoaches);
+        List<String> expectedOutputFileContent = Collections.singletonList(StringConstants.ItImpossibleToMarshalTheCoaches);
 
         processInputTest(directoryPath, expectedOutputFileContent);
     }
