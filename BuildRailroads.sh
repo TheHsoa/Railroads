@@ -1,7 +1,9 @@
 #!/bin/bash
 
-CLASS_PATH="out/src"
-SOURCES=$(find -path "./src/*" -name "*.java")
+readonly CLASS_PATH="out/src"
+readonly SOURCES=$(find -path "./src/*" -name "*.java")
+
+rm -rf ./$CLASS_PATH/*
 
 mkdir -p $CLASS_PATH
 

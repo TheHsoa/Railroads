@@ -1,9 +1,11 @@
 #!/bin/bash
 
-CLASS_PATH="out/src"
-TEST_CLASS_PATH="out/test"
-TEST_SOURCES=$(find -path "./test/*" -name "*.java")
-TEST_RESOURCES_PATH="./testresources"
+readonly CLASS_PATH="out/src"
+readonly TEST_CLASS_PATH="out/test"
+readonly TEST_SOURCES=$(find -path "./test/*" -name "*.java")
+readonly TEST_RESOURCES_PATH="./testresources"
+
+rm -rf ./$TEST_CLASS_PATH/*
 
 mkdir -p $TEST_CLASS_PATH
 
